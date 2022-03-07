@@ -19,10 +19,6 @@ class Stock < ApplicationRecord
     end
   end
 
-  def self.check_db(ticker_symbol) 
-    where(ticker: ticker_symbol).first
-  end
-
   #  def latest_price
   #   client = IEX::Api::Client.new(
   #    publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
