@@ -23,14 +23,14 @@ class Stock < ApplicationRecord
     where(ticker: ticker_symbol).first
   end
 
-  def latest_price
-    client = IEX::Api::Client.new(
-      publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
-      endpoint: 'https://sandbox.iexapis.com/v1'
-    )
+  #  def latest_price
+  #   client = IEX::Api::Client.new(
+  #    publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
+  #    endpoint: 'https://sandbox.iexapis.com/v1'
+  #  )
 
-    client.price(self.ticker)
-  end
+  #  client.price(self.ticker)
+  #end
 
 
 end
