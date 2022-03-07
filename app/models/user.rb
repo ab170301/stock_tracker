@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
 
   def stock_already_tracked?(ticker_symbol)
-    self.stocks.where(ticker: ticker_symbol).exists?    
+    self.stocks.where(ticker: ticker_symbol.upcase).exists?    
   end
 
   def under_stock_limit?
