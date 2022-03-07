@@ -9,7 +9,7 @@
         <li class="list-group-item list-color">
           <strong>Name: </strong> <%= friend.full_name %>
           <strong>Email: </strong> <%= friend.email %>
-          <%= link_to 'View profile', '#',
+          <%= link_to 'View profile', user_path(friend),
                                 class: "btn btn-xs btn-primary btn-sm " %>
           <% if current_user.not_friends_with?(friend.id) %>
             <%= link_to 'Follow friend?', friendships_path(friend: friend),
