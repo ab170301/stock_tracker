@@ -28,4 +28,31 @@ class User < ApplicationRecord
     "Anonymous"
   end
 
+  def self.search(input)
+    input.strip!
+    to_send_back = (first_name_matches(input) + last_name_matches(input) + email_matches(input)).uniq
+    return nil unless to_send_back
+    to_send_back
+  end
+
+  def self.first_name_matches(input)
+    matches('first_name', input)
+  end
+
+  def self.last_name_matches(input)
+    matches('last_name', input)
+  end
+
+  def self.email_matches(input)
+    matches('email', input)
+  end
+
+  def self.matches(field_name, input)
+    where("#{field_name} like ?", "%#{input}%")
+  end
+
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+
 end
